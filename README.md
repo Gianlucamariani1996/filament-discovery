@@ -21,3 +21,16 @@
 Opzionale (Se si usano componenti frontend personalizzati):
 * `npm install`
 * `npm run dev`
+
+# Avvio Progetto
+
+* `composer install`
+* `php artisan key:generate`
+* `cp .env.example .env`
+* `touch database/database.sqlite`
+* nel .env:
+    `DB_CONNECTION=sqlite`
+    `DB_DATABASE=/Users/tuo-utente/Projects/filament-app/database/database.sqlite`
+* `php artisan migrate`
+
+* Creazione User: `php artisan make:filament-user`
