@@ -34,3 +34,16 @@ Opzionale (Se si usano componenti frontend personalizzati):
 * `php artisan migrate`
 
 * Creazione User: `php artisan make:filament-user`
+
+# Creazione Modello
+
+* `php artisan make:model Product -m`
+* `php artisan make:model Season -m`
+* `php artisan make:model Category -m`
+* `php artisan migrate`
+
+# Creazione Risorse Filament 
+
+* `php artisan make:filament-resource Product`
+* `php artisan make:filament-resource Season`
+* `php artisan make:filament-resource Category`
