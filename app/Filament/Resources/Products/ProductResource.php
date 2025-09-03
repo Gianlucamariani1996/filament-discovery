@@ -51,7 +51,8 @@ class ProductResource extends Resource
                         ->columnSpan(3)
                         ->columns(1)
                         ->schema([
-                            ImageEntry::make('Images'),
+                            ImageEntry::make('images')
+                                ->disk('public')
                         ]),
                     Group::make()
                         ->columnSpan(2)

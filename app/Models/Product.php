@@ -13,6 +13,11 @@ class Product extends Model
         'price',
         'category_id',
         'season_id',
+        'images',
+    ];
+
+    protected $casts = [
+        'images' => 'array', // JSON array of paths
     ];
 
     // Product belongs to a Category
