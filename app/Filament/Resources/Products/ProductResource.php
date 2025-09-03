@@ -14,6 +14,10 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Group;
 
 class ProductResource extends Resource
 {
@@ -33,6 +37,37 @@ class ProductResource extends Resource
         return ProductsTable::configure($table);
     }
 
+    public static function infolist(Schema $schema): Schema
+    {
+        // The Section has 5 columns.
+        // Left Group takes 3 columns → shows stacked images (1 column inside).
+        // Right Group takes 2 columns → splits that space into 2 columns for text fields.
+        return $schema->schema([
+            Section::make('Product Details')
+                ->columnSpanFull()
+                ->columns(5)
+                ->schema([
+                    Group::make()
+                        ->columnSpan(3)
+                        ->columns(1)
+                        ->schema([
+                            ImageEntry::make('Images'),
+                        ]),
+                    Group::make()
+                        ->columnSpan(2)
+                        ->columns(2)
+                        ->schema([
+                            TextEntry::make('title'),
+                            TextEntry::make('product_code'),
+                            TextEntry::make('price'),
+                            TextEntry::make('category_id')
+                                ->label('Store')
+                                ->getStateUsing(fn($record) => $record->category?->name ?? 'N/A'),
+                        ]),
+                ]),
+        ]);
+    }
+
     public static function getRelations(): array
     {
         return [
@@ -45,7 +80,7 @@ class ProductResource extends Resource
         return [
             'index' => ListProducts::route('/'),
             'create' => CreateProduct::route('/create'),
-            'edit' => EditProduct::route('/{record}/edit'),
+            'view' => Pages\ViewProduct::route('/{record}'),
         ];
     }
 }
