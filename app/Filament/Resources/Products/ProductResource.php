@@ -39,32 +39,29 @@ class ProductResource extends Resource
 
     public static function infolist(Schema $schema): Schema
     {
-        // The Section has 5 columns.
-        // Left Group takes 3 columns → shows stacked images (1 column inside).
-        // Right Group takes 2 columns → splits that space into 2 columns for text fields.
         return $schema->schema([
+            Section::make('Product Images')
+                ->columnSpanFull()
+                ->schema([
+                    ImageEntry::make('images')
+                        ->disk('public')
+                        ->imageSize(300)
+                        ->hiddenLabel()
+                        ->extraAttributes([
+                            'class' => 'justify-content-around',
+                        ]),
+                ]),
+
             Section::make('Product Details')
                 ->columnSpanFull()
-                ->columns(5)
+                ->columns(2) // two columns for text entries
                 ->schema([
-                    Group::make()
-                        ->columnSpan(3)
-                        ->columns(1)
-                        ->schema([
-                            ImageEntry::make('images')
-                                ->disk('public')
-                        ]),
-                    Group::make()
-                        ->columnSpan(2)
-                        ->columns(2)
-                        ->schema([
-                            TextEntry::make('title'),
-                            TextEntry::make('product_code'),
-                            TextEntry::make('price'),
-                            TextEntry::make('category_id')
-                                ->label('Store')
-                                ->getStateUsing(fn($record) => $record->category?->name ?? 'N/A'),
-                        ]),
+                    TextEntry::make('title'),
+                    TextEntry::make('product_code'),
+                    TextEntry::make('price'),
+                    TextEntry::make('category_id')
+                        ->label('Store')
+                        ->getStateUsing(fn($record) => $record->category?->name ?? 'N/A'),
                 ]),
         ]);
     }
