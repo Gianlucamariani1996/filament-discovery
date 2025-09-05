@@ -12,6 +12,8 @@ use Filament\Actions\ExportBulkAction;
 use App\Filament\Exports\ProductExporter;
 use Filament\Actions\ImportAction;
 use App\Filament\Imports\ProductImporter;
+use Filament\Tables\Filters\SelectFilter;
+use App\Models\Category;
 
 class ProductsTable
 {
@@ -45,7 +47,11 @@ class ProductsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('category_id')
+                    ->label('Category')
+                    ->options(fn() => Category::orderBy('name')->pluck('name', 'id'))
+                    ->multiple()
+                    ->preload()
             ])
             ->recordActions([
                 EditAction::make()
