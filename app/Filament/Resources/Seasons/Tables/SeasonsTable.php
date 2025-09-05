@@ -16,12 +16,6 @@ class SeasonsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('start_date')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('end_date')
-                    ->date()
-                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

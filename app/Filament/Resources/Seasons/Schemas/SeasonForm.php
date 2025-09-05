@@ -14,10 +14,6 @@ class SeasonForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                DatePicker::make('start_date')
-                    ->required(),
-                DatePicker::make('end_date')
-                    ->required(),
             ]);
     }
 }
