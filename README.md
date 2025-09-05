@@ -55,3 +55,23 @@ Opzionale (Se si usano componenti frontend personalizzati):
 * `php artisan migrate`
 * modificare `ProductsTable.php`, `ProductResource.php`, `ProductForm.php` se necessario
 
+# Import e Export excel
+
+* `php artisan make:queue-batches-table`
+* `php artisan make:notifications-table` 
+* `php artisan vendor:publish --tag=filament-actions-migrations`
+* `php artisan migrate`
+
+## Exporter
+* `php artisan make:filament-exporter Product --generate`
+
+Una volta eseguiti questi comandi aggiungere la BulkAction in `ProductExporter.php`:
+```php
+ExportBulkAction::make()
+    ->exporter(ProductExporter::class),
+```
+
+## Importer
+* `php artisan make:filament-importer Product --generate`
+
+A questo punto avviare la coda `php artisan queue:listen`.

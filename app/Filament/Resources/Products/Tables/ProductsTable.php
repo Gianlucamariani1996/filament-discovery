@@ -8,6 +8,10 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Actions\ExportBulkAction;
+use App\Filament\Exports\ProductExporter;
+use Filament\Actions\ImportAction;
+use App\Filament\Imports\ProductImporter;
 
 class ProductsTable
 {
@@ -52,6 +56,12 @@ class ProductsTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+                ExportBulkAction::make()
+                    ->exporter(ProductExporter::class),
+            ])
+            ->headerActions([
+                ImportAction::make()
+                    ->importer(ProductImporter::class)
+            ]);;
     }
 }
