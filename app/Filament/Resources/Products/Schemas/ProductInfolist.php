@@ -34,6 +34,9 @@ class ProductInfolist
                     TextEntry::make('category_id')
                         ->label('Store')
                         ->getStateUsing(fn($record) => $record->category?->name ?? 'N/A'),
+                    TextEntry::make('season_id')
+                        ->label('Season')
+                        ->getStateUsing(fn($record) => $record->season?->name ?? 'N/A'),
                 ]),
         ]);
     }
