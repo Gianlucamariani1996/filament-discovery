@@ -42,6 +42,7 @@ class ProductsTable
             ])
             ->recordActions([
                 EditAction::make()
+                    ->slideOver()
                     ->label('') // remove label text
             ])
             ->toolbarActions([
