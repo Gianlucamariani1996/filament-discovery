@@ -25,6 +25,12 @@ class ProductForm
                             ->required(),
                         TextInput::make('price')
                             ->required(),
+                        Select::make('status')
+                            ->options([
+                                'Draft' => 'Draft',
+                                'Published' => 'Published',
+                                'Archived' => 'Archived',
+                            ]),
                         Select::make('category_id')
                             ->relationship('category', 'name'),
                         Select::make('season_id')

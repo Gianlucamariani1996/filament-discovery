@@ -24,6 +24,9 @@ class ProductsTable
                     ->searchable(),
                 TextColumn::make('price')
                     ->searchable(),
+                TextColumn::make('status')
+                    ->badge()
+                    ->searchable(),
                 TextColumn::make('category.name')
                     ->searchable(),
                 TextColumn::make('season.name')

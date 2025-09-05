@@ -47,3 +47,11 @@ Opzionale (Se si usano componenti frontend personalizzati):
 * `php artisan make:filament-resource Product`
 * `php artisan make:filament-resource Season`
 * `php artisan make:filament-resource Category`
+
+# Aggiunta di un campo
+
+* creare la migration: `php artisan make:migration add_status_to_products_table --table=products`
+* aggiornare `Product.php` (campo `$fillable`)
+* `php artisan migrate`
+* modificare `ProductsTable.php`, `ProductResource.php`, `ProductForm.php` se necessario
+
