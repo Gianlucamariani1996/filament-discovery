@@ -14,6 +14,7 @@ use Filament\Actions\ImportAction;
 use App\Filament\Imports\ProductImporter;
 use Filament\Tables\Filters\SelectFilter;
 use App\Models\Category;
+use App\Models\Season;
 
 class ProductsTable
 {
@@ -50,6 +51,11 @@ class ProductsTable
                 SelectFilter::make('category_id')
                     ->label('Category')
                     ->options(fn() => Category::orderBy('name')->pluck('name', 'id'))
+                    ->multiple()
+                    ->preload(),
+                SelectFilter::make('season_id')
+                    ->label('Season')
+                    ->options(fn() => Season::orderBy('name')->pluck('name', 'id'))
                     ->multiple()
                     ->preload()
             ])
