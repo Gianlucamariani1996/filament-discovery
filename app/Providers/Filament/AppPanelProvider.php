@@ -32,6 +32,9 @@ class AppPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->viteTheme('resources/css/filament/app/theme.css')
+            ->brandLogo(asset('images/logo-reply-reverse.png'))
+            ->brandLogoHeight('3rem')
+            ->darkModeBrandLogo(asset('images/logo-reply.png'))
             ->favicon(asset('images/favicon.ico'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
