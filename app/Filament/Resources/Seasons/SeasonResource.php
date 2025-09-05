@@ -19,9 +19,11 @@ class SeasonResource extends Resource
 {
     protected static ?string $model = Season::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Calendar;
 
     protected static string|UnitEnum|null $navigationGroup = 'Taxonomies';
+    
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {
