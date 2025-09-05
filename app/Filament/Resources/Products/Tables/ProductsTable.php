@@ -40,7 +40,8 @@ class ProductsTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->label('') // remove label text
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
