@@ -15,10 +15,11 @@ class ProductsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('images.0')  
+                    ->disk('public')
+                    ->imageSize(100),   
                 TextColumn::make('title')
                     ->searchable(),
-                ImageColumn::make('images')
-                    ->disk('public'),
                 TextColumn::make('product_code')
                     ->searchable(),
                 TextColumn::make('price')
