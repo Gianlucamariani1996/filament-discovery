@@ -90,3 +90,15 @@ curl -H "Accept: application/json" \
      -H "Authorization: Bearer 1|ywSH2Fv1VnldY1QzRjTssHgH8lKLzIj8mX19tgfaca361755" \
      http://127.0.0.1:8000/api/user
 ```
+
+## Product Controller
+
+* `php artisan make:controller ProductController --resource`
+* `php artisan make:resource ProductResource` per creare `app/Http/Resources/ProductResource.php`
+
+* Test: 
+    ```bash
+    curl -H "Accept: application/json" \
+        -H "Authorization: Bearer 1|ywSH2Fv1VnldY1QzRjTssHgH8lKLzIj8mX19tgfaca361755" \
+        http://127.0.0.1:8000/api/products/1
+    ```
